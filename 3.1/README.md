@@ -26,6 +26,8 @@ function about() {
     let version = 'Forum Netology, 1.0.';
     console.log(version);
 }
+
+about();
 ```
 
 ### Ожидаемый ответ
@@ -112,6 +114,8 @@ function printMessages() {
         console.log(from + ' | ' + text);
     }
 }
+
+printMessages();
 ```
 
 ### Ожидаемый ответ
