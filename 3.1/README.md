@@ -130,4 +130,104 @@ Brian Kerninghan | hello, world
 
 ### Подсказка
 
--
+
+## Задача 3
+
+### Заголовок
+
+Информация о чате
+
+### Описание задания
+
+Пользуясь переменной `user` из задания 2, напишите функцию printChatUsers, которая выведет список собеседников в переписке.  
+Имена не должны повторяться
+
+Пример:
+
+```js
+let user = {
+    name: "Мистер дудец",
+    login: "mrdudec",
+    reputation: 15,
+    messages: [
+      {from: "oleg", text: "Вам нужно больше кальция!"},
+      {from: "Илья", text: "Просто растворите мел в воде"},
+      {from: "Иван", text: "Да, это уникальное советское средство :)"},
+      {from: "Илья", text: "Иван, тебе 12 лет, ты не знаешь, что было в советах"},
+      {from: "oleg", text: "Друзья, пожалуйста, держите себя в руках"},
+      {from: "Илья", text: "Мой друг - администратор"}, 
+      {from: "administrator", text: "Чат удалён"},
+    ]
+};
+```
+
+```js
+printChatUsers(); 
+```
+
+выведет
+```
+В чате пользователей: 4
+Вот они: oleg, Илья, Иван, administrator
+```
+
+Обратите внимание на то, что в примере сообщений **6**, но авторов - **4**.
+
+#### Процесс реализации
+
+1. Объявите переменную user и заполните её тестовыми данными из задания 2
+2. Убедитесь, что переменная user не объявлена внутри функции.
+В теле функции выполните действия:
+   - Напечатайте заголовок: `В чате пользователей: X`, где X - количество пользователей
+   - из функции обратитесь к переменной user. Напечатайте имена отправителей без повторения через запятую
+
+Шаблон:
+
+`Вот они: имя1, имя2, имя3, имя4`
+
+### Эталонное решение эксперта
+
+```js
+let user = {
+    name: "Иван Иванов",
+    login: "killer504",
+    reputation: 97,
+    messages: [
+      {from: "administrator", text: "Вы получили предупреждение за публикацию рекламы на форуме"},
+      {from: "Петр", text: "Собираем встречу в субботу в 19:00. Придёшь?"},
+      {from: "administrator", text: "Ваш рейтинг был повышен пользователем DonkeyKong"},
+      {from: "administrator", text: "Ваш рейтинг был повышен пользователем Netologist"},
+      {from: "Brian Kerninghan", text: "hello, world"}
+    ]
+};
+
+function printChatUsers() {
+    let messages = user.messages;
+    let n = messages.length;
+    let users = [];
+    for (let i = 0; i < n; i++ ) {
+        let message = messages[i];
+        let from = message.from;
+        if (!users.includes(from)) {
+            users.push(from);
+        }
+    }
+    console.log('В чате пользователей: ' + users.length);
+    
+    let usersString = '';
+    for (let i = 0; i < users.length; i++ ) {
+       usersString += users[i] + ', ';
+    }
+    usersString = usersString.slice(0, -2);
+    console.log('Вот они: ' + usersString);
+}
+
+printChatUsers();
+```
+
+### Ожидаемый ответ
+
+```
+В чате пользователей: 3
+Вот они: administrator, Петр, Brian Kerninghan
+```
