@@ -104,9 +104,10 @@ let messages = [
 
 messages.push('Готово');
 
-messages[3] = 'Стараюсь';
-let index = messages.indexOf(':)');
-messages.splice(index, 1);
+let index1 = messages.indexOf('Ленюсь.');
+messages[index1] = 'Стараюсь';
+let index2 = messages.indexOf(':)');
+messages.splice(index2, 1);
 
 console.log(messages);
 ```
